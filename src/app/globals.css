@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #0a0a0a;
+  --color-surface: #141414;
+  --color-surface-2: #1c1c1e;
+  --color-border: #2a2a2a;
+  --color-text: #ffffff;
+  --color-text-secondary: #a0a0a0;
+
+  --color-red: #ff3b5c;
+  --color-cyan: #00c6d7;
+  --color-purple: #7b2fff;
+  --color-success: #00d48a;
+  --color-warning: #ffb800;
+
+  --color-yape: #6c1fc6;
+  --color-plin: #00a86b;
+  --color-izipay: #e8000d;
+  --color-whatsapp: #25d366;
+
+  --gradient-main: linear-gradient(135deg, #ff3b5c 0%, #7b2fff 100%);
+  --gradient-full: linear-gradient(135deg, #ff3b5c 0%, #7b2fff 55%, #00c6d7 100%);
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+
+  --color-brand-red: var(--color-red);
+  --color-brand-cyan: var(--color-cyan);
+  --color-brand-purple: var(--color-purple);
+  --color-brand-success: var(--color-success);
+  --color-brand-warning: var(--color-warning);
+
+  --color-yape: var(--color-yape);
+  --color-plin: var(--color-plin);
+  --color-izipay: var(--color-izipay);
+  --color-whatsapp: var(--color-whatsapp);
+
+  --font-sans: var(--font-inter);
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-red);
+  color: #fff;
+}
+
+.gradient-main {
+  background: var(--gradient-main);
+}
+
+.gradient-full {
+  background: var(--gradient-full);
+}
+
+.gradient-text {
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 8px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
