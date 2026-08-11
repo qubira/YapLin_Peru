@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { whatsappLink } from "@/lib/whatsapp";
 import { MenuIcon, CloseIcon } from "@/components/icons/Icons";
 import { getDictionary } from "@/translations";
-import { LOCALES, LOCALE_META, type Locale } from "@/translations/locales";
+import { ENABLED_LOCALES, type Locale } from "@/translations/locales";
 import { cn } from "@/lib/utils";
 
 // Kept in sync with LOCALE_COOKIE in "@/lib/locale" (that module pulls in
@@ -30,8 +30,8 @@ export function Header({ locale }: { locale: Locale }) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <div className="flex items-center gap-2.5">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
+        <div className="flex shrink-0 items-center gap-2.5">
           <Image
             src="/brands/logoyaplin.png"
             alt="YapLin"
@@ -39,10 +39,10 @@ export function Header({ locale }: { locale: Locale }) {
             height={34}
             className="rounded-lg"
           />
-          <span className="text-lg font-extrabold tracking-tight text-text">YapLin</span>
+          <span className="whitespace-nowrap text-lg font-extrabold tracking-tight text-text">YapLin</span>
         </div>
 
-        <nav className="hidden items-center gap-8 text-sm font-medium text-text-secondary md:flex">
+        <nav className="hidden items-center gap-6 whitespace-nowrap text-sm font-medium text-text-secondary lg:flex">
           {t.header.links.map((link) => (
             <a key={link.href} href={link.href} className="transition-colors hover:text-text">
               {link.label}
@@ -50,43 +50,32 @@ export function Header({ locale }: { locale: Locale }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
+          {/* Only the two live languages show here — the rest ("coming soon")
+              would need 4 more pills plus captions, which is what was
+              crowding/overlapping the bar in the first place. Nothing lost:
+              those locales aren't selectable yet anyway. */}
           <div
             className="hidden items-center gap-1 rounded-xl border border-border bg-surface p-1 sm:flex"
             aria-label={t.common.selectLanguage}
           >
-            {LOCALES.map((code) => {
-              const meta = LOCALE_META[code];
-              if (meta.comingSoon) {
-                return (
-                  <span
-                    key={code}
-                    title={t.common.comingSoon}
-                    className="flex cursor-not-allowed items-center gap-1 rounded-lg px-2 py-1 text-xs font-medium text-text-secondary opacity-40"
-                  >
-                    {code.toUpperCase()}
-                    <span className="hidden lg:inline">· {t.common.comingSoon}</span>
-                  </span>
-                );
-              }
-              return (
-                <button
-                  key={code}
-                  type="button"
-                  disabled={code === locale}
-                  onClick={() => selectLocale(code)}
-                  aria-current={code === locale}
-                  className={cn(
-                    "rounded-lg px-2 py-1 text-xs font-semibold transition-colors",
-                    code === locale
-                      ? "bg-surface-2 text-text"
-                      : "text-text-secondary hover:text-text"
-                  )}
-                >
-                  {code.toUpperCase()}
-                </button>
-              );
-            })}
+            {ENABLED_LOCALES.map((code) => (
+              <button
+                key={code}
+                type="button"
+                disabled={code === locale}
+                onClick={() => selectLocale(code)}
+                aria-current={code === locale}
+                className={cn(
+                  "rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors",
+                  code === locale
+                    ? "bg-surface-2 text-text"
+                    : "text-text-secondary hover:text-text"
+                )}
+              >
+                {code.toUpperCase()}
+              </button>
+            ))}
           </div>
 
           <div className="hidden sm:block">
@@ -103,7 +92,7 @@ export function Header({ locale }: { locale: Locale }) {
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? t.header.closeMenu : t.header.openMenu}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-text md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-text lg:hidden"
           >
             {open ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
           </button>
@@ -111,7 +100,7 @@ export function Header({ locale }: { locale: Locale }) {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-bg px-4 py-4 md:hidden">
+        <div className="border-t border-border bg-bg px-4 py-4 lg:hidden">
           <nav className="flex flex-col gap-1 text-sm font-medium text-text-secondary">
             {t.header.links.map((link) => (
               <a
@@ -126,40 +115,26 @@ export function Header({ locale }: { locale: Locale }) {
           </nav>
 
           <div
-            className="mt-3 flex flex-wrap items-center gap-1 rounded-xl border border-border bg-surface p-1"
+            className="mt-3 flex items-center gap-1 rounded-xl border border-border bg-surface p-1 sm:hidden"
             aria-label={t.common.selectLanguage}
           >
-            {LOCALES.map((code) => {
-              const meta = LOCALE_META[code];
-              if (meta.comingSoon) {
-                return (
-                  <span
-                    key={code}
-                    title={t.common.comingSoon}
-                    className="flex cursor-not-allowed items-center gap-1 rounded-lg px-2 py-1 text-xs font-medium text-text-secondary opacity-40"
-                  >
-                    {code.toUpperCase()} · {t.common.comingSoon}
-                  </span>
-                );
-              }
-              return (
-                <button
-                  key={code}
-                  type="button"
-                  disabled={code === locale}
-                  onClick={() => selectLocale(code)}
-                  aria-current={code === locale}
-                  className={cn(
-                    "rounded-lg px-2 py-1 text-xs font-semibold transition-colors",
-                    code === locale
-                      ? "bg-surface-2 text-text"
-                      : "text-text-secondary hover:text-text"
-                  )}
-                >
-                  {code.toUpperCase()}
-                </button>
-              );
-            })}
+            {ENABLED_LOCALES.map((code) => (
+              <button
+                key={code}
+                type="button"
+                disabled={code === locale}
+                onClick={() => selectLocale(code)}
+                aria-current={code === locale}
+                className={cn(
+                  "rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors",
+                  code === locale
+                    ? "bg-surface-2 text-text"
+                    : "text-text-secondary hover:text-text"
+                )}
+              >
+                {code.toUpperCase()}
+              </button>
+            ))}
           </div>
 
           <div className="mt-3 sm:hidden">
