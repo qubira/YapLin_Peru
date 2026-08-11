@@ -189,7 +189,7 @@ const es = {
 
   privacy: {
     title: "Política de Privacidad",
-    lastUpdated: "Última actualización: 22 de julio de 2026",
+    lastUpdated: "Última actualización: 4 de agosto de 2026",
     sections: [
       {
         heading: "1. Quiénes somos",
@@ -201,15 +201,15 @@ const es = {
       {
         heading: "2. Qué información recopilamos",
         body: [
-          "**Datos de cuenta:** nombre, correo electrónico, rol (propietario, supervisor o cajero) y la tienda a la que perteneces. Estos datos los registra nuestro equipo al activar tu negocio en YapLin — no existe un formulario público de registro.",
-          "**Notificaciones de pago:** la app Android de YapLin solicita el permiso de **acceso a notificaciones** del sistema. Con ese permiso, YapLin escucha únicamente las notificaciones que provienen de las apps de Yape, Plin e Izipay — identificadas por su paquete de aplicación — y extrae de ellas el monto, el nombre del pagador, el método de pago y la referencia de la operación. Ninguna otra notificación del celular (mensajes, correos, redes sociales, otras apps bancarias no soportadas, etc.) es leída, procesada ni almacenada.",
-          "**Datos técnicos mínimos:** usamos la información estrictamente necesaria para el funcionamiento de la app (por ejemplo, un token de sesión). YapLin no accede a tu ubicación, contactos, cámara, micrófono ni archivos del dispositivo.",
+          "**Datos de cuenta:** nombre, correo electrónico, rol (propietario, supervisor o cajero), la tienda a la que perteneces y, si lo activas, un PIN de transacciones (guardado siempre cifrado, nunca en texto plano) para confirmar acciones sensibles como corregir el monto de un pago. Estos datos los registra nuestro equipo al activar tu negocio en YapLin — no existe un formulario público de registro.",
+          "**Notificaciones de pago:** la app Android de YapLin solicita el permiso de **acceso a notificaciones** del sistema. Con ese permiso, YapLin escucha únicamente las notificaciones de Yape e Izipay y, para Plin —que no tiene una app propia—, las del banco que uses para pagar con Plin (BBVA, Interbank o Scotiabank), identificadas siempre por su paquete de aplicación. De esas notificaciones extrae el monto, el nombre del pagador, el método de pago y la referencia de la operación. Ninguna otra notificación del celular (mensajes, correos, redes sociales, otras apps no conectadas, etc.) es leída, procesada ni almacenada.",
+          "**Datos técnicos mínimos:** usamos la información estrictamente necesaria para el funcionamiento de la app (por ejemplo, un token de sesión). Para acciones sensibles o intentos bloqueados por falta de permiso, registramos también la fecha, la dirección IP y el tipo de dispositivo/navegador desde donde se hicieron, como medida de seguridad y trazabilidad de tu cuenta. YapLin no accede a tu ubicación, contactos, cámara, micrófono ni archivos del dispositivo.",
         ],
       },
       {
         heading: "3. Para qué usamos esta información",
         body: [
-          "Usamos los datos exclusivamente para operar el servicio que contrataste: mostrar tus pagos en tiempo real, generar reportes para tu negocio, gestionar los accesos de tu equipo y notificarte sobre el estado de tu cuenta (por ejemplo, vencimientos de suscripción). No vendemos ni compartimos tus datos con terceros para fines publicitarios.",
+          "Usamos los datos exclusivamente para operar el servicio que contrataste: mostrar tus pagos en tiempo real, generar reportes para tu negocio, gestionar los accesos de tu equipo y notificarte sobre el estado de tu cuenta (por ejemplo, vencimientos de suscripción). También usamos los registros de seguridad (como intentos bloqueados o cambios sensibles) para detectar actividad indebida y proteger tu cuenta. No vendemos ni compartimos tus datos con terceros para fines publicitarios.",
         ],
       },
       {
@@ -221,7 +221,8 @@ const es = {
       {
         heading: "5. Cuánto tiempo conservamos tus datos",
         body: [
-          "Conservamos la información mientras tu cuenta esté activa. Cualquier miembro de tu equipo con permiso puede eliminar un registro de pago individual desde la app. Si tu negocio deja de usar YapLin, puedes solicitar la eliminación de tu cuenta y de los datos asociados escribiéndonos directamente — atendemos estas solicitudes de forma manual y directa.",
+          "Conservamos la información mientras tu cuenta esté activa. Los pagos registrados en YapLin no pueden eliminarse — ni por ti ni por tu equipo: quedan siempre en el historial (se pueden reasignar a otra tienda o corregir en su monto, y cada cambio queda registrado) para que tu negocio tenga una contabilidad confiable y trazable.",
+          "Los miembros de tu equipo sí pueden desactivarse al instante desde la app, o eliminarse por completo si ya no deben tener acceso. Si tu negocio deja de usar YapLin y quieres eliminar tu cuenta y los datos asociados, escríbenos directamente — atendemos estas solicitudes de forma manual y directa.",
         ],
       },
       {
