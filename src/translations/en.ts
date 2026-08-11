@@ -16,10 +16,10 @@ const en: typeof es = {
 
   header: {
     links: [
-      { href: "#beneficios", label: "Benefits" },
-      { href: "#como-funciona", label: "How it works" },
-      { href: "#metodos-de-pago", label: "Payment methods" },
-      { href: "#preguntas", label: "FAQ" },
+      { href: "/#beneficios", label: "Benefits" },
+      { href: "/#como-funciona", label: "How it works" },
+      { href: "/#metodos-de-pago", label: "Payment methods" },
+      { href: "/#preguntas", label: "FAQ" },
     ],
     requestDemo: "Request demo",
     openMenu: "Open menu",

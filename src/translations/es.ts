@@ -14,10 +14,10 @@ const es = {
 
   header: {
     links: [
-      { href: "#beneficios", label: "Beneficios" },
-      { href: "#como-funciona", label: "Cómo funciona" },
-      { href: "#metodos-de-pago", label: "Métodos de pago" },
-      { href: "#preguntas", label: "Preguntas" },
+      { href: "/#beneficios", label: "Beneficios" },
+      { href: "/#como-funciona", label: "Cómo funciona" },
+      { href: "/#metodos-de-pago", label: "Métodos de pago" },
+      { href: "/#preguntas", label: "Preguntas" },
     ],
     requestDemo: "Solicitar demo",
     openMenu: "Abrir menú",
